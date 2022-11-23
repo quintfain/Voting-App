@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F692EED5292C47770036ED21 /* Voting_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EED4292C47770036ED21 /* Voting_AppApp.swift */; };
+		F692EED9292C477A0036ED21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F692EED8292C477A0036ED21 /* Assets.xcassets */; };
+		F692EEDC292C477A0036ED21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F692EEDB292C477A0036ED21 /* Preview Assets.xcassets */; };
+		F692EEE5292C480D0036ED21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEE4292C480D0036ED21 /* NetworkManager.swift */; };
+		F692EEE7292DBA560036ED21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEE6292DBA560036ED21 /* LoginView.swift */; };
+		F692EEE9292DBAC40036ED21 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */; };
+		F692EEEB292DBB730036ED21 /* ElectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEEA292DBB730036ED21 /* ElectionsView.swift */; };
+		F692EEED292DBB820036ED21 /* ElectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEEC292DBB820036ED21 /* ElectionStatusView.swift */; };
+		F692EEF1292DBCBD0036ED21 /* PrivacyCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF0292DBCBD0036ED21 /* PrivacyCenterView.swift */; };
+		F692EEF3292DBCE10036ED21 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF2292DBCE10036ED21 /* VotingView.swift */; };
+		F692EEF5292DBD4F0036ED21 /* OrganizerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF4292DBD4F0036ED21 /* OrganizerHomeView.swift */; };
+		F692EEF7292DBD5F0036ED21 /* CurrentCampaignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF6292DBD5F0036ED21 /* CurrentCampaignsView.swift */; };
+		F692EEF9292DBD840036ED21 /* CreateCampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF8292DBD840036ED21 /* CreateCampaignView.swift */; };
+		F692EEFB292DBD990036ED21 /* CanidatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFA292DBD990036ED21 /* CanidatesView.swift */; };
+		F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F692EED1292C47770036ED21 /* Voting App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voting App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F692EED4292C47770036ED21 /* Voting_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voting_AppApp.swift; sourceTree = "<group>"; };
+		F692EED8292C477A0036ED21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F692EEDB292C477A0036ED21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F692EEDD292C477A0036ED21 /* Voting_App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voting_App.entitlements; sourceTree = "<group>"; };
+		F692EEE4292C480D0036ED21 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F692EEE6292DBA560036ED21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		F692EEEA292DBB730036ED21 /* ElectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionsView.swift; sourceTree = "<group>"; };
+		F692EEEC292DBB820036ED21 /* ElectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionStatusView.swift; sourceTree = "<group>"; };
+		F692EEF0292DBCBD0036ED21 /* PrivacyCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyCenterView.swift; sourceTree = "<group>"; };
+		F692EEF2292DBCE10036ED21 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
+		F692EEF4292DBD4F0036ED21 /* OrganizerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerHomeView.swift; sourceTree = "<group>"; };
+		F692EEF6292DBD5F0036ED21 /* CurrentCampaignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCampaignsView.swift; sourceTree = "<group>"; };
+		F692EEF8292DBD840036ED21 /* CreateCampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCampaignView.swift; sourceTree = "<group>"; };
+		F692EEFA292DBD990036ED21 /* CanidatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanidatesView.swift; sourceTree = "<group>"; };
+		F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCampaignView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F692EECE292C47770036ED21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F692EEC8292C47770036ED21 = {
+			isa = PBXGroup;
+			children = (
+				F692EED3292C47770036ED21 /* Voting App */,
+				F692EED2292C47770036ED21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F692EED2292C47770036ED21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F692EED1292C47770036ED21 /* Voting App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F692EED3292C47770036ED21 /* Voting App */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEE4292C480D0036ED21 /* NetworkManager.swift */,
+				F692EED4292C47770036ED21 /* Voting_AppApp.swift */,
+				F692EEE3292C47AD0036ED21 /* Views */,
+				F692EED8292C477A0036ED21 /* Assets.xcassets */,
+				F692EEDD292C477A0036ED21 /* Voting_App.entitlements */,
+				F692EEDA292C477A0036ED21 /* Preview Content */,
+			);
+			path = "Voting App";
+			sourceTree = "<group>";
+		};
+		F692EEDA292C477A0036ED21 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEDB292C477A0036ED21 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F692EEE3292C47AD0036ED21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEEF292DBB970036ED21 /* ElectionOffical */,
+				F692EEEE292DBB900036ED21 /* Voter */,
+				F692EEE6292DBA560036ED21 /* LoginView.swift */,
+				F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F692EEEE292DBB900036ED21 /* Voter */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEEA292DBB730036ED21 /* ElectionsView.swift */,
+				F692EEEC292DBB820036ED21 /* ElectionStatusView.swift */,
+				F692EEF0292DBCBD0036ED21 /* PrivacyCenterView.swift */,
+				F692EEF2292DBCE10036ED21 /* VotingView.swift */,
+			);
+			path = Voter;
+			sourceTree = "<group>";
+		};
+		F692EEEF292DBB970036ED21 /* ElectionOffical */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEF4292DBD4F0036ED21 /* OrganizerHomeView.swift */,
+				F692EEF6292DBD5F0036ED21 /* CurrentCampaignsView.swift */,
+				F692EEF8292DBD840036ED21 /* CreateCampaignView.swift */,
+				F692EEFA292DBD990036ED21 /* CanidatesView.swift */,
+				F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */,
+			);
+			path = ElectionOffical;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F692EED0292C47770036ED21 /* Voting App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F692EEE0292C477A0036ED21 /* Build configuration list for PBXNativeTarget "Voting App" */;
+			buildPhases = (
+				F692EECD292C47770036ED21 /* Sources */,
+				F692EECE292C47770036ED21 /* Frameworks */,
+				F692EECF292C47770036ED21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Voting App";
+			productName = "Voting App";
+			productReference = F692EED1292C47770036ED21 /* Voting App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F692EEC9292C47770036ED21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					F692EED0292C47770036ED21 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = F692EECC292C47770036ED21 /* Build configuration list for PBXProject "Voting App" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F692EEC8292C47770036ED21;
+			productRefGroup = F692EED2292C47770036ED21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F692EED0292C47770036ED21 /* Voting App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F692EECF292C47770036ED21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F692EEDC292C477A0036ED21 /* Preview Assets.xcassets in Resources */,
+				F692EED9292C477A0036ED21 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F692EECD292C47770036ED21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F692EEF7292DBD5F0036ED21 /* CurrentCampaignsView.swift in Sources */,
+				F692EEFB292DBD990036ED21 /* CanidatesView.swift in Sources */,
+				F692EEE5292C480D0036ED21 /* NetworkManager.swift in Sources */,
+				F692EEF9292DBD840036ED21 /* CreateCampaignView.swift in Sources */,
+				F692EEF1292DBCBD0036ED21 /* PrivacyCenterView.swift in Sources */,
+				F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */,
+				F692EEE7292DBA560036ED21 /* LoginView.swift in Sources */,
+				F692EEED292DBB820036ED21 /* ElectionStatusView.swift in Sources */,
+				F692EEF5292DBD4F0036ED21 /* OrganizerHomeView.swift in Sources */,
+				F692EEE9292DBAC40036ED21 /* PrivacyPolicyView.swift in Sources */,
+				F692EEF3292DBCE10036ED21 /* VotingView.swift in Sources */,
+				F692EED5292C47770036ED21 /* Voting_AppApp.swift in Sources */,
+				F692EEEB292DBB730036ED21 /* ElectionsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F692EEDE292C477A0036ED21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F692EEDF292C477A0036ED21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F692EEE1292C477A0036ED21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Voting App/Voting_App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Voting App/Preview Content\"";
+				DEVELOPMENT_TEAM = 667896G428;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.laurenkearley.Voting-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F692EEE2292C477A0036ED21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Voting App/Voting_App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Voting App/Preview Content\"";
+				DEVELOPMENT_TEAM = 667896G428;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.laurenkearley.Voting-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F692EECC292C47770036ED21 /* Build configuration list for PBXProject "Voting App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F692EEDE292C477A0036ED21 /* Debug */,
+				F692EEDF292C477A0036ED21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F692EEE0292C477A0036ED21 /* Build configuration list for PBXNativeTarget "Voting App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F692EEE1292C477A0036ED21 /* Debug */,
+				F692EEE2292C477A0036ED21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F692EEC9292C47770036ED21 /* Project object */;
+}
