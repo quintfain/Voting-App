@@ -9,7 +9,30 @@ import SwiftUI
 
 struct PrivacyCenterView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Section("iVote Privacy") {
+                    Button("Privacy Policy") {
+                        
+                    }
+                    Button("Privacy Pledge") {
+                        
+                    }
+                }
+                Section("Your Data") {
+                    Button("Aggregate Data") {
+                        
+                    }
+                    Button("Acess My Data") {
+                        
+                    }
+                    Button("Delete My Data") {
+                        
+                    }
+                }
+            }
+            .navigationTitle("Privacy Center")
+        }
     }
 }
 

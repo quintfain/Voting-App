@@ -9,7 +9,26 @@ import SwiftUI
 
 struct OrganizerHomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Spacer()
+                Image(systemName: "checkmark.shield.fill")
+                    .foregroundColor(.blue)
+                    .font(.system(size: 200))
+                Spacer()
+                Button("Current Campaign") {
+                    
+                }
+                .font(.largeTitle)
+                .buttonStyle(.bordered)
+                Button("Create Campaign") {
+                    
+                }
+                .font(.largeTitle)
+                .buttonStyle(.bordered)
+                Spacer()
+            }
+        }
     }
 }
 

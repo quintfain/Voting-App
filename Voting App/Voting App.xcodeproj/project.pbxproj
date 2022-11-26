@@ -22,6 +22,8 @@
 		F692EEF9292DBD840036ED21 /* CreateCampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEF8292DBD840036ED21 /* CreateCampaignView.swift */; };
 		F692EEFB292DBD990036ED21 /* CanidatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFA292DBD990036ED21 /* CanidatesView.swift */; };
 		F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */; };
+		F692EF002931B3A90036ED21 /* FullPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */; };
+		F692EF032931BB4D0036ED21 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EF022931BB4D0036ED21 /* Campaign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		F692EEF8292DBD840036ED21 /* CreateCampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCampaignView.swift; sourceTree = "<group>"; };
 		F692EEFA292DBD990036ED21 /* CanidatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanidatesView.swift; sourceTree = "<group>"; };
 		F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCampaignView.swift; sourceTree = "<group>"; };
+		F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPolicyView.swift; sourceTree = "<group>"; };
+		F692EF022931BB4D0036ED21 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		F692EED3292C47770036ED21 /* Voting App */ = {
 			isa = PBXGroup;
 			children = (
+				F692EF012931BB310036ED21 /* Models */,
 				F692EEE4292C480D0036ED21 /* NetworkManager.swift */,
 				F692EED4292C47770036ED21 /* Voting_AppApp.swift */,
 				F692EEE3292C47AD0036ED21 /* Views */,
@@ -95,10 +100,9 @@
 		F692EEE3292C47AD0036ED21 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F692EEFE2931B37E0036ED21 /* Common */,
 				F692EEEF292DBB970036ED21 /* ElectionOffical */,
 				F692EEEE292DBB900036ED21 /* Voter */,
-				F692EEE6292DBA560036ED21 /* LoginView.swift */,
-				F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +128,24 @@
 				F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */,
 			);
 			path = ElectionOffical;
+			sourceTree = "<group>";
+		};
+		F692EEFE2931B37E0036ED21 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F692EEE6292DBA560036ED21 /* LoginView.swift */,
+				F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */,
+				F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F692EF012931BB310036ED21 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F692EF022931BB4D0036ED21 /* Campaign.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +223,7 @@
 				F692EEE5292C480D0036ED21 /* NetworkManager.swift in Sources */,
 				F692EEF9292DBD840036ED21 /* CreateCampaignView.swift in Sources */,
 				F692EEF1292DBCBD0036ED21 /* PrivacyCenterView.swift in Sources */,
+				F692EF002931B3A90036ED21 /* FullPolicyView.swift in Sources */,
 				F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */,
 				F692EEE7292DBA560036ED21 /* LoginView.swift in Sources */,
 				F692EEED292DBB820036ED21 /* ElectionStatusView.swift in Sources */,
@@ -208,6 +231,7 @@
 				F692EEE9292DBAC40036ED21 /* PrivacyPolicyView.swift in Sources */,
 				F692EEF3292DBCE10036ED21 /* VotingView.swift in Sources */,
 				F692EED5292C47770036ED21 /* Voting_AppApp.swift in Sources */,
+				F692EF032931BB4D0036ED21 /* Campaign.swift in Sources */,
 				F692EEEB292DBB730036ED21 /* ElectionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
