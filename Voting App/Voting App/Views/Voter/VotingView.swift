@@ -59,7 +59,7 @@ struct VotingView: View {
                         }
                         viewModel.campaigns[index!].hasVoted = true
                     }, label: {
-                        Text("Submit Campaign")
+                        Text("Submit Votes")
                             .font(.custom("Roboto-Bold", size: 20.0))
                             .padding()
                             .frame(maxWidth: .infinity)
