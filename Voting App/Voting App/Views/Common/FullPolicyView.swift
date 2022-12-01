@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FullPolicyView: View {
+    @ObservedObject var viewModel: ViewModel
     var body: some View {
         ScrollView(.vertical) {
             VStack(spacing: 20) {
@@ -96,6 +97,14 @@ struct FullPolicyView: View {
 
 struct FullPolicyView_Previews: PreviewProvider {
     static var previews: some View {
-        FullPolicyView()
+        let paul = Canidate(name: "Paul", votes: 0)
+        let riley = Canidate(name: "Riley", votes: 0)
+        let spencer = Canidate(name: "Spencer", votes: 0)
+        let lauren = Canidate(name: "Lauren", votes: 0)
+        let pres = Position(positionName: "Pres", canidates: [paul, riley])
+        let vp = Position(positionName: "VP", canidates: [spencer, lauren])
+        let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
+        let viewModel = ViewModel(campaigns: [campaign])
+        FullPolicyView(viewModel: viewModel)
     }
 }

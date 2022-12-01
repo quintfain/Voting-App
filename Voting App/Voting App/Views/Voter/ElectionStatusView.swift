@@ -9,24 +9,28 @@ import SwiftUI
 
 struct ElectionStatusView: View {
     @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
+    
+    var campaign: Campaign
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("\(viewModel.campaign.campaignName)")
+            Text("\(campaign.campaignName)")
                 .font(.largeTitle)
-            Text("\(viewModel.campaign.campaignDescription)")
+            Text("\(campaign.campaignDescription)")
             Spacer()
                 .frame(height: 10)
             Text("Positions")
                 .font(.title)
-            ForEach(0..<viewModel.campaign.positions.count, id: \.self) { i in
-                Text("\(viewModel.campaign.positions[i].positionName)")
+            ForEach(0..<campaign.positions.count, id: \.self) { i in
+                Text("\(campaign.positions[i].positionName)")
                     .font(.title2)
-                ForEach(viewModel.campaign.positions[i].canidates, id: \.self) {
+                ForEach(campaign.positions[i].canidates, id: \.self) {
                     Text("\($0.name)")
-                    let percent = ($0.votes / viewModel.campaign.positions[i].totalVotes) * 100
+                    let percent = ($0.votes / campaign.positions[i].totalVotes) * 100
                     let formattedFloat = String(format: "%.1f", percent)
-                    ProgressView("\(formattedFloat)%", value: $0.votes, total: viewModel.campaign.positions[i].totalVotes)
+                    ProgressView("\(formattedFloat)%", value: $0.votes, total: campaign.positions[i].totalVotes)
                 }
             }
             Spacer()
@@ -35,25 +39,27 @@ struct ElectionStatusView: View {
         .padding(.horizontal)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu(content: {
-                    NavigationLink(destination: PrivacyCenterView()) {
-                        HStack {
-                            Text("Privacy Center")
-                            Image(systemName: "person.badge.shield.checkmark")
-                        }
+                Menu {
+                    Button {
+                        navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                        isNavigationActive = true
+                    } label: {
+                        Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
                     }
-                    NavigationLink(destination: LoginView()) {
-                        HStack {
-                            Text("Logout")
-                            Image(systemName: "arrowshape.turn.up.backward")
-                        }
+                    Button {
+                        navigateTo = AnyView(LoginView())
+                        isNavigationActive = true
+                    } label: {
+                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
                     }
-                }, label: {
-                    HStack {
-                        Image(systemName: "line.3.horizontal")
-                        Text("Menu")
-                    }
-                })
+                } label: {
+                    Label("Menu", systemImage: "line.3.horizontal")
+                    
+                }
+                .background(
+                    NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                        EmptyView()
+                    })
             }
         }
     }
@@ -76,6 +82,6 @@ struct ElectionStatusView_Previews: PreviewProvider {
         let tres = Position(positionName: "Tresurer", canidates: [liz, tori])
         let campaign2 = Campaign(campaignName: "GT Water Polo", campaignDescription: "Description", positions: [cap, tres], hasVoted: true)
         let viewModel = ViewModel(campaigns: [campaign, campaign2])
-        ElectionStatusView(viewModel: viewModel)
+        ElectionStatusView(viewModel: viewModel, campaign: campaign)
     }
 }

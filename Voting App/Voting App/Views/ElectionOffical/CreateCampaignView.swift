@@ -18,6 +18,9 @@ struct CreateCampaignView: View {
     @State private var presentedAddPosition = false
     @State private var presentedAddCanidate = false
     @State private var positionName = ""
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
+    
     var body: some View {
         VStack {
             Form {
@@ -76,6 +79,31 @@ struct CreateCampaignView: View {
 
             }
             .navigationTitle("Create Campaign")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button {
+                            navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                            isNavigationActive = true
+                        } label: {
+                            Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                        }
+                        Button {
+                            navigateTo = AnyView(LoginView())
+                            isNavigationActive = true
+                        } label: {
+                            Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                        }
+                    } label: {
+                        Label("Menu", systemImage: "line.3.horizontal")
+                        
+                    }
+                    .background(
+                        NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                            EmptyView()
+                        })
+                }
+            }
         }
     }
     

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SubmitCampaignView: View {
     @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
     var campaign: Campaign
     
     var body: some View {
@@ -30,17 +32,42 @@ struct SubmitCampaignView: View {
                     ProgressView("0%", value: 0, total: 100)
                 }
             }
-            NavigationLink {
-                OrganizerHomeView()
-            } label: {
+            NavigationLink(destination: OrganizerHomeView(viewModel: viewModel).onAppear {
+                viewModel.campaigns.append(campaign)
+            }, label: {
                 Text("Submit Campaign")
                     .frame(maxWidth: .infinity)
-            }
+            })
             .buttonStyle(.borderedProminent)
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button {
+                        navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                        isNavigationActive = true
+                    } label: {
+                        Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                    }
+                    Button {
+                        navigateTo = AnyView(LoginView())
+                        isNavigationActive = true
+                    } label: {
+                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                    }
+                } label: {
+                    Label("Menu", systemImage: "line.3.horizontal")
+                    
+                }
+                .background(
+                    NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                        EmptyView()
+                    })
+            }
+        }
     }
 }
 

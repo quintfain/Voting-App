@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct OrganizerHomeView: View {
-    @State private var viewModel = ViewModel()
-    
+    @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -41,28 +43,29 @@ struct OrganizerHomeView: View {
             .padding(.horizontal)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                     Menu(content: {
-                         NavigationLink(destination: OrganizerHomeView()) {
-                             HStack {
-                                 Text("Home")
-                                 Image(systemName: "house")
-                                 
-                             }
-                         }
-                         NavigationLink(destination: LoginView()) {
-                             HStack {
-                                 Text("Logout")
-                                 Image(systemName: "arrowshape.turn.up.backward")
-                             }
-                         }
-                     }, label: {
-                         HStack {
-                             Image(systemName: "line.3.horizontal")
-                             Text("Menu")
-                         }
-                     })
-                  }
-              }
+                    Menu {
+                        Button {
+                            navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                            isNavigationActive = true
+                        } label: {
+                            Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                        }
+                        Button {
+                            navigateTo = AnyView(LoginView())
+                            isNavigationActive = true
+                        } label: {
+                            Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                        }
+                    } label: {
+                        Label("Menu", systemImage: "line.3.horizontal")
+                        
+                    }
+                    .background(
+                        NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                            EmptyView()
+                        })
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -77,7 +80,14 @@ struct OrganizerHomeView_Previews: PreviewProvider {
         let pres = Position(positionName: "Pres", canidates: [paul, riley])
         let vp = Position(positionName: "VP", canidates: [spencer, lauren])
         let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
-        let viewModel = ViewModel(campaigns: [campaign])
-        OrganizerHomeView()
+        let quint = Canidate(name: "Quint", votes: 10)
+        let emma = Canidate(name: "Emma", votes: 50)
+        let liz = Canidate(name: "Elizabeth", votes: 30)
+        let tori = Canidate(name: "Tori", votes: 30)
+        let cap = Position(positionName: "Captain", canidates: [quint, emma])
+        let tres = Position(positionName: "Tresurer", canidates: [liz, tori])
+        let campaign2 = Campaign(campaignName: "GT Water Polo", campaignDescription: "Description", positions: [cap, tres], hasVoted: true)
+        let viewModel = ViewModel(campaigns: [campaign, campaign2])
+        OrganizerHomeView(viewModel: viewModel)
     }
 }

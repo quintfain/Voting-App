@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ElectionsView: View {
-    @State private var viewModel = ViewModel()
+    @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
     
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
-                        .frame(height: 30)
+                    .frame(height: 30)
                 ForEach(viewModel.campaigns, id: \.self) { campaign in
                     NavigationLink(destination: hasVotedView(campaign: campaign)) {
                         Text("\(campaign.campaignName)")
@@ -33,36 +35,38 @@ struct ElectionsView: View {
             .navigationTitle("Current Elections")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                     Menu(content: {
-                         NavigationLink(destination: PrivacyCenterView()) {
-                             HStack {
-                                 Text("Privacy Center")
-                                 Image(systemName: "person.badge.shield.checkmark")
-                             }
-                         }
-                         NavigationLink(destination: LoginView()) {
-                             HStack {
-                                 Text("Logout")
-                                 Image(systemName: "arrowshape.turn.up.backward")
-                             }
-                         }
-                     }, label: {
-                         HStack {
-                             Image(systemName: "line.3.horizontal")
-                             Text("Menu")
-                         }
-                     })
-                  }
-              }
+                    Menu {
+                        Button {
+                            navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                            isNavigationActive = true
+                        } label: {
+                            Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                        }
+                        Button {
+                            navigateTo = AnyView(LoginView())
+                            isNavigationActive = true
+                        } label: {
+                            Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                        }
+                    } label: {
+                        Label("Menu", systemImage: "line.3.horizontal")
+                        
+                    }
+                    .background(
+                        NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                            EmptyView()
+                        })
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
-
+        
     }
     
     @ViewBuilder
     func hasVotedView(campaign: Campaign) -> some View {
         if campaign.hasVoted {
-            ElectionStatusView(viewModel: viewModel)
+            ElectionStatusView(viewModel: viewModel, campaign: campaign)
         } else {
             VotingView(viewModel: viewModel)
         }
@@ -86,6 +90,6 @@ struct ElectionsView_Previews: PreviewProvider {
         let tres = Position(positionName: "Tresurer", canidates: [liz, tori])
         let campaign2 = Campaign(campaignName: "GT Water Polo", campaignDescription: "Description", positions: [cap, tres], hasVoted: true)
         let viewModel = ViewModel(campaigns: [campaign, campaign2])
-        ElectionsView()
+        ElectionsView(viewModel: viewModel)
     }
 }

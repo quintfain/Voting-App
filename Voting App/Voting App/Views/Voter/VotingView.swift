@@ -9,6 +9,8 @@ import SwiftUI
 
 struct VotingView: View {
     @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
     
     @State private var currentVotes: [Canidate] = []
     @State private var showVotingSheet: Bool = false
@@ -22,7 +24,7 @@ struct VotingView: View {
                 .frame(height: 10)
             Text("Positions")
                 .font(.title)
-            NavigationLink(destination: ElectionsView(), label: {
+            NavigationLink(destination: ElectionsView(viewModel: viewModel), label: {
                 Text("Submit Votes")
                     .frame(maxWidth: .infinity)
             })
@@ -32,6 +34,31 @@ struct VotingView: View {
         .navigationTitle("test")
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button {
+                        navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                        isNavigationActive = true
+                    } label: {
+                        Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                    }
+                    Button {
+                        navigateTo = AnyView(LoginView())
+                        isNavigationActive = true
+                    } label: {
+                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                    }
+                } label: {
+                    Label("Menu", systemImage: "line.3.horizontal")
+                    
+                }
+                .background(
+                    NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                        EmptyView()
+                    })
+            }
+        }
         
     }
 }

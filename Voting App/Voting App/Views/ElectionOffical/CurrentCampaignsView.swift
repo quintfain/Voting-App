@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CurrentCampaignsView: View {
     @ObservedObject var viewModel: ViewModel
+    @State var navigateTo: AnyView?
+    @State var isNavigationActive = false
     
     var body: some View {
         VStack {
@@ -18,7 +20,7 @@ struct CurrentCampaignsView: View {
             Spacer()
                 .frame(height: 30)
             ForEach(viewModel.campaigns, id: \.self) { campaign in
-                NavigationLink(destination: ElectionStatusView(viewModel: viewModel)) {
+                NavigationLink(destination: ElectionStatusView(viewModel: viewModel, campaign: campaign)) {
                     Text("\(campaign.campaignName)")
                         .fontWeight(.medium)
                         .frame(maxWidth: .infinity)
@@ -29,6 +31,31 @@ struct CurrentCampaignsView: View {
             Spacer()
         }
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button {
+                        navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                        isNavigationActive = true
+                    } label: {
+                        Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                    }
+                    Button {
+                        navigateTo = AnyView(LoginView())
+                        isNavigationActive = true
+                    } label: {
+                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                    }
+                } label: {
+                    Label("Menu", systemImage: "line.3.horizontal")
+                    
+                }
+                .background(
+                    NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                        EmptyView()
+                    })
+            }
+        }
     }
 }
 

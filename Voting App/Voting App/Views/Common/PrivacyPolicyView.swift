@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PrivacyPolicyView: View {
+    @ObservedObject var viewModel: ViewModel
     var isVoter = true
     
     var body: some View {
@@ -35,7 +36,7 @@ struct PrivacyPolicyView: View {
                         .frame(maxWidth: .infinity)
                 })
                 .buttonStyle(.borderedProminent)
-                NavigationLink(destination: FullPolicyView(), label: {
+                NavigationLink(destination: FullPolicyView(viewModel: viewModel), label: {
                     Text("Learn More")
                         .font(.title2)
                         .frame(maxWidth: .infinity)
@@ -52,15 +53,23 @@ struct PrivacyPolicyView: View {
     @ViewBuilder
     func openHomeView() -> some View {
         if isVoter {
-            AnyView(ElectionsView())
+            AnyView(ElectionsView(viewModel: viewModel))
         } else {
-            AnyView(OrganizerHomeView())
+            AnyView(OrganizerHomeView(viewModel: viewModel))
         }
     }
 }
 
 struct PrivacyPolicyView_Previews: PreviewProvider {
     static var previews: some View {
-        PrivacyPolicyView()
+        let paul = Canidate(name: "Paul", votes: 0)
+        let riley = Canidate(name: "Riley", votes: 0)
+        let spencer = Canidate(name: "Spencer", votes: 0)
+        let lauren = Canidate(name: "Lauren", votes: 0)
+        let pres = Position(positionName: "Pres", canidates: [paul, riley])
+        let vp = Position(positionName: "VP", canidates: [spencer, lauren])
+        let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
+        let viewModel = ViewModel(campaigns: [campaign])
+        PrivacyPolicyView(viewModel: viewModel)
     }
 }

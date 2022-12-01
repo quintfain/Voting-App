@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var password: String = ""
     @State private var studentID: String = ""
+    @State private var viewModel = ViewModel()
     
     var body: some View {
         NavigationView {
@@ -40,14 +41,15 @@ struct LoginView: View {
             .padding(.horizontal)
             .background(Color(.systemGroupedBackground))
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder
     func loginButtonClicked() -> some View {
         if studentID == "voter" {
-            AnyView(PrivacyPolicyView(isVoter: true))
+            AnyView(PrivacyPolicyView(viewModel: viewModel, isVoter: true))
         } else {
-            AnyView(PrivacyPolicyView(isVoter: false))
+            AnyView(PrivacyPolicyView(viewModel: viewModel, isVoter: false))
         }
     }
 }
