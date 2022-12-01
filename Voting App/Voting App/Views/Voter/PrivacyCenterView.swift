@@ -53,7 +53,6 @@ struct PrivacyCenterView: View {
                             }
                         }
                     })
-                    .background(Color.background.edgesIgnoringSafeArea(.all))
                     Button("Delete My Data") {
                         presentedDeleteData = true
                     } .sheet(isPresented: $presentedDeleteData, content: {
