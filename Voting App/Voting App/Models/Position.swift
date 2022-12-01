@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Position: Hashable, Identifiable {
+class Position: Hashable, Identifiable, Codable {
     static func == (lhs: Position, rhs: Position) -> Bool {
         lhs.id == rhs.id
     }

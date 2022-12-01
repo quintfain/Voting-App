@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Campaign: Hashable, Identifiable {
+class Campaign: Hashable, Identifiable, Codable {
     static func == (lhs: Campaign, rhs: Campaign) -> Bool {
         lhs.id == rhs.id
     }

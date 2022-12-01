@@ -47,6 +47,21 @@ struct LoginView: View {
                 Spacer()
                 
             }
+            .onAppear {
+                if let data = UserDefaults.standard.data(forKey: "SavedData") {
+                    if let decoded = try? JSONDecoder().decode(ViewModel.self, from: data) {
+                        viewModel = decoded
+                        print("decoded")
+                        return
+                    }
+                } else {
+                    if let encoded = try? JSONEncoder().encode(viewModel) {
+                        UserDefaults.standard.set(encoded, forKey: "SavedData")
+                        print("saved")
+                    }
+                }
+                
+            }
             .padding(.horizontal)
             .background(Color.background)
         }

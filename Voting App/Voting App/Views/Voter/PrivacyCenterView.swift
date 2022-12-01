@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PrivacyCenterView: View {
     @ObservedObject var viewModel: ViewModel
+    @State private var presentedMyData = false
+    @State private var presentedDeleteData = false
     
     var body: some View {
         VStack {
@@ -27,15 +29,68 @@ struct PrivacyCenterView: View {
                     }
                 }.listRowBackground(Color.sec)
                 Section("Your Data") {
-                    Button("Aggregate Data") {
-                        
-                    }
                     Button("Access My Data") {
-                        
-                    }
+                        presentedMyData = true
+                    } .sheet(isPresented: $presentedMyData, content: {
+                        ZStack {
+                            Color.background.edgesIgnoringSafeArea(.all)
+                            VStack {
+                                Spacer()
+                                    .frame(height: 20)
+                                Image(systemName: "checkmark.shield.fill")
+                                    .foregroundColor(.text)
+                                    .font(.system(size: 100))
+                                Text("iVote")
+                                    .font(.custom("Roboto-Bold", size: 30.0))
+                                    .foregroundColor(.text)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                    .frame(height: 20)
+                                Text("iVote works to ensure your privacy by collecting minimal data. We have the following data associated with this account. This data is never associated with your vote or voting history.\n\n studentID: voter")
+                                    .foregroundColor(.text)
+                                    .font(.custom("Roboto-Regular", size: 16.0))
+                                Spacer()
+                            }
+                        }
+                    })
+                    .background(Color.background.edgesIgnoringSafeArea(.all))
                     Button("Delete My Data") {
-                        
-                    }
+                        presentedDeleteData = true
+                    } .sheet(isPresented: $presentedDeleteData, content: {
+                        ZStack {
+                            Color.background.edgesIgnoringSafeArea(.all)
+                            VStack {
+                                Spacer()
+                                    .frame(height: 20)
+                                Image(systemName: "checkmark.shield.fill")
+                                    .foregroundColor(.text)
+                                    .font(.system(size: 100))
+                                Text("iVote")
+                                    .font(.custom("Roboto-Bold", size: 30.0))
+                                    .foregroundColor(.text)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                    .frame(height: 20)
+                                Text("In order to delete your data stored with iVote, you will need to delete your account. Your deletion request will be processed and you will recieve an email confirmation when your data has been deleted from our system. This will not delete your votes from current or previous campaigns.\n")
+                                    .foregroundColor(.text)
+                                    .font(.custom("Roboto-Regular", size: 16.0))
+                                Button {
+                                    presentedDeleteData = false
+                                } label: {
+                                    Text("Request Data Deletion")
+                                        .font(.custom("Roboto-Bold", size: 20.0))
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.accent.opacity(0.7))
+                                        .foregroundColor(Color.text)
+                                        .cornerRadius(10)
+                                        .frame(maxWidth: .infinity)
+                                }
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                        }
+                    })
                 }.listRowBackground(Color.sec)
             }
             .scrollContentBackground(.hidden)

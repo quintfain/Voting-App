@@ -7,8 +7,12 @@
 
 import Foundation
 
-class ViewModel: ObservableObject {
+class ViewModel: ObservableObject, Codable {
     @Published var campaigns: [Campaign]
+    
+    private enum CodingKeys: String, CodingKey {
+            case campaigns
+    }
     
     init() {
         let paul = Canidate(name: "Paul", votes: 20, isSelected: false)
@@ -42,5 +46,16 @@ class ViewModel: ObservableObject {
     
     init(campaigns: [Campaign]) {
         self.campaigns = campaigns
+    }
+    
+    required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        campaigns = try values.decode([Campaign].self, forKey: .campaigns)
+        
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(campaigns, forKey: .campaigns)
     }
 }

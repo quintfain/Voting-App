@@ -47,6 +47,12 @@ struct ElectionsView: View {
             }
             .padding(.horizontal)
             .background(Color.background)
+            .onDisappear {
+                if let encoded = try? JSONEncoder().encode(viewModel) {
+                    UserDefaults.standard.set(encoded, forKey: "SavedData")
+                    print("encoded")
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {

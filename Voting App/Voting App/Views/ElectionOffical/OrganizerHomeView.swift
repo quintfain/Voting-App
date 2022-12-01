@@ -48,6 +48,11 @@ struct OrganizerHomeView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .onDisappear {
+                if let encoded = try? JSONEncoder().encode(viewModel) {
+                    UserDefaults.standard.set(encoded, forKey: "SavedData")
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
