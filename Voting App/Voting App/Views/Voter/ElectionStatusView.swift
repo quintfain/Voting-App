@@ -71,6 +71,7 @@ struct ElectionStatusView: View {
                     } label: {
                         Label("Menu", systemImage: "line.3.horizontal")
                             .foregroundColor(Color.text)
+                            .font(.custom("Roboto-Regular", size: 26.0))
                         
                     }
                     .background(
