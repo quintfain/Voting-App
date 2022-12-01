@@ -11,33 +11,38 @@ struct PrivacyCenterView: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        Form {
-            Section("iVote Privacy") {
-                NavigationLink(destination: PrivacyPledgeView(viewModel: viewModel)) {
-                    Text("Privacy Pledge")
-                        .font(.custom("Roboto-Medium", size: 16.0))
-                }
-                NavigationLink(destination: FullPolicyView(viewModel: viewModel)) {
-                    Text("Privacy Policy")
-                        .font(.custom("Roboto-Medium", size: 16.0))
-                }
-            }.listRowBackground(Color.sec)
-            Section("Your Data") {
-                Button("Aggregate Data") {
-                    
-                }
-                Button("Access My Data") {
-                    
-                }
-                Button("Delete My Data") {
-                    
-                }
-            }.listRowBackground(Color.sec)
+        VStack {
+            Text("Privacy Center")
+                .font(.custom("Roboto-Bold", size: 30.0))
+                .foregroundColor(.text)
+            Form {
+                Section("iVote Privacy") {
+                    NavigationLink(destination: PrivacyPledgeView(viewModel: viewModel)) {
+                        Text("Privacy Pledge")
+                            .font(.custom("Roboto-Medium", size: 16.0))
+                    }
+                    NavigationLink(destination: FullPolicyView(viewModel: viewModel)) {
+                        Text("Privacy Policy")
+                            .font(.custom("Roboto-Medium", size: 16.0))
+                    }
+                }.listRowBackground(Color.sec)
+                Section("Your Data") {
+                    Button("Aggregate Data") {
+                        
+                    }
+                    Button("Access My Data") {
+                        
+                    }
+                    Button("Delete My Data") {
+                        
+                    }
+                }.listRowBackground(Color.sec)
+            }
+            .scrollContentBackground(.hidden)
+            .background(Color.background)
+            .foregroundColor(Color.text)
         }
-        .navigationTitle("Privacy Center")
-        .scrollContentBackground(.hidden)
         .background(Color.background)
-        .foregroundColor(Color.text)
     }
 }
 
