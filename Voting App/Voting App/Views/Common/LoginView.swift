@@ -18,18 +18,21 @@ struct LoginView: View {
                 Image(systemName: "checkmark.shield.fill")
                     .foregroundColor(.blue)
                     .font(.system(size: 200))
+                Text("iVote")
+                    .font(.title)
+                    .foregroundColor(.blue)
+                    .fontWeight(.bold)
                 Spacer()
                 TextField("Student ID", text: $studentID)
                     .textFieldStyle(.roundedBorder)
+                    .autocapitalization(.none)
                 SecureField("Password", text: $password)
                     .textFieldStyle(.roundedBorder)
-                Spacer()
-                Button {
-                    loginButtonClicked()
-                } label: {
+                NavigationLink(destination: loginButtonClicked(),  label: {
                     Text("Submit")
                         .font(.title2)
-                }
+                        .frame(maxWidth: .infinity)
+                })
                 .buttonStyle(.borderedProminent)
                 Spacer()
                 
@@ -39,8 +42,13 @@ struct LoginView: View {
         }
     }
     
-    func loginButtonClicked() {
-        
+    @ViewBuilder
+    func loginButtonClicked() -> some View {
+        if studentID == "voter" {
+            AnyView(PrivacyPolicyView(isVoter: true))
+        } else {
+            AnyView(PrivacyPolicyView(isVoter: false))
+        }
     }
 }
 

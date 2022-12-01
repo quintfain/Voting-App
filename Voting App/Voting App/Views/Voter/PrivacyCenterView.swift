@@ -12,18 +12,18 @@ struct PrivacyCenterView: View {
         NavigationView {
             Form {
                 Section("iVote Privacy") {
-                    Button("Privacy Policy") {
-                        
+                    NavigationLink(destination: PrivacyPledgeView()) {
+                        Text("Privacy Pledge")
                     }
-                    Button("Privacy Pledge") {
-                        
+                    NavigationLink(destination: FullPolicyView()) {
+                        Text("Privacy Policy")
                     }
                 }
                 Section("Your Data") {
                     Button("Aggregate Data") {
                         
                     }
-                    Button("Acess My Data") {
+                    Button("Access My Data") {
                         
                     }
                     Button("Delete My Data") {

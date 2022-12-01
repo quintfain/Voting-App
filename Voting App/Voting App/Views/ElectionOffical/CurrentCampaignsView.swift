@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct CurrentCampaignsView: View {
+    var campaigns: [Campaign]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Current Campaigns")
+                .font(.title)
+                .fontWeight(.semibold)
+            Spacer()
+                .frame(height: 30)
+            ForEach(campaigns, id: \.self) { campaign in
+                NavigationLink(destination: ElectionStatusView(campaign: campaign)) {
+                    Text("\(campaign.campaignName)")
+                        .fontWeight(.medium)
+                        .frame(maxWidth: .infinity)
+                        .font(.title2)
+                }
+                .buttonStyle(.bordered)
+            }
+            Spacer()
+        }
+        .padding(.horizontal)
     }
 }
 
 struct CurrentCampaignsView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentCampaignsView()
+        let paul = Canidate(name: "Paul", votes: 0)
+        let riley = Canidate(name: "Riley", votes: 0)
+        let spencer = Canidate(name: "Spencer", votes: 0)
+        let lauren = Canidate(name: "Lauren", votes: 0)
+        let pres = Position(positionName: "Pres", canidates: [paul, riley])
+        let vp = Position(positionName: "VP", canidates: [spencer, lauren])
+        let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp])
+        CurrentCampaignsView(campaigns: [campaign])
     }
 }

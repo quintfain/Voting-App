@@ -24,6 +24,10 @@
 		F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */; };
 		F692EF002931B3A90036ED21 /* FullPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */; };
 		F692EF032931BB4D0036ED21 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EF022931BB4D0036ED21 /* Campaign.swift */; };
+		F692EF052937CB6B0036ED21 /* PrivacyPledgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EF042937CB6B0036ED21 /* PrivacyPledgeView.swift */; };
+		F692EF0B29381C190036ED21 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EF0A29381C190036ED21 /* ProgressBar.swift */; };
+		F692EF0D29382B050036ED21 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692EF0C29382B050036ED21 /* TestData.swift */; };
+		F692EF0F29382E180036ED21 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F692EF0E29382E180036ED21 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		F692EEFC292DBDB70036ED21 /* SubmitCampaignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCampaignView.swift; sourceTree = "<group>"; };
 		F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPolicyView.swift; sourceTree = "<group>"; };
 		F692EF022931BB4D0036ED21 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		F692EF042937CB6B0036ED21 /* PrivacyPledgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPledgeView.swift; sourceTree = "<group>"; };
+		F692EF0A29381C190036ED21 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		F692EF0C29382B050036ED21 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		F692EF0E29382E180036ED21 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		F692EEC8292C47770036ED21 = {
 			isa = PBXGroup;
 			children = (
+				F692EF0E29382E180036ED21 /* Launch.storyboard */,
 				F692EED3292C47770036ED21 /* Voting App */,
 				F692EED2292C47770036ED21 /* Products */,
 			);
@@ -112,8 +121,8 @@
 			children = (
 				F692EEEA292DBB730036ED21 /* ElectionsView.swift */,
 				F692EEEC292DBB820036ED21 /* ElectionStatusView.swift */,
-				F692EEF0292DBCBD0036ED21 /* PrivacyCenterView.swift */,
 				F692EEF2292DBCE10036ED21 /* VotingView.swift */,
+				F692EEF0292DBCBD0036ED21 /* PrivacyCenterView.swift */,
 			);
 			path = Voter;
 			sourceTree = "<group>";
@@ -136,6 +145,8 @@
 				F692EEE6292DBA560036ED21 /* LoginView.swift */,
 				F692EEE8292DBAC40036ED21 /* PrivacyPolicyView.swift */,
 				F692EEFF2931B3A90036ED21 /* FullPolicyView.swift */,
+				F692EF042937CB6B0036ED21 /* PrivacyPledgeView.swift */,
+				F692EF0A29381C190036ED21 /* ProgressBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				F692EF022931BB4D0036ED21 /* Campaign.swift */,
+				F692EF0C29382B050036ED21 /* TestData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +220,7 @@
 			files = (
 				F692EEDC292C477A0036ED21 /* Preview Assets.xcassets in Resources */,
 				F692EED9292C477A0036ED21 /* Assets.xcassets in Resources */,
+				F692EF0F29382E180036ED21 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F692EEF7292DBD5F0036ED21 /* CurrentCampaignsView.swift in Sources */,
+				F692EF0B29381C190036ED21 /* ProgressBar.swift in Sources */,
 				F692EEFB292DBD990036ED21 /* CanidatesView.swift in Sources */,
 				F692EEE5292C480D0036ED21 /* NetworkManager.swift in Sources */,
 				F692EEF9292DBD840036ED21 /* CreateCampaignView.swift in Sources */,
@@ -226,10 +240,12 @@
 				F692EF002931B3A90036ED21 /* FullPolicyView.swift in Sources */,
 				F692EEFD292DBDB70036ED21 /* SubmitCampaignView.swift in Sources */,
 				F692EEE7292DBA560036ED21 /* LoginView.swift in Sources */,
+				F692EF0D29382B050036ED21 /* TestData.swift in Sources */,
 				F692EEED292DBB820036ED21 /* ElectionStatusView.swift in Sources */,
 				F692EEF5292DBD4F0036ED21 /* OrganizerHomeView.swift in Sources */,
 				F692EEE9292DBAC40036ED21 /* PrivacyPolicyView.swift in Sources */,
 				F692EEF3292DBCE10036ED21 /* VotingView.swift in Sources */,
+				F692EF052937CB6B0036ED21 /* PrivacyPledgeView.swift in Sources */,
 				F692EED5292C47770036ED21 /* Voting_AppApp.swift in Sources */,
 				F692EF032931BB4D0036ED21 /* Campaign.swift in Sources */,
 				F692EEEB292DBB730036ED21 /* ElectionsView.swift in Sources */,
@@ -367,6 +383,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -398,6 +415,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
