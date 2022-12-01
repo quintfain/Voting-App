@@ -69,7 +69,6 @@ struct VotingView: View {
             })
             Spacer()
         }
-        .navigationTitle("test")
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
         .background(Color.background)
