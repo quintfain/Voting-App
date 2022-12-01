@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Campaign: Hashable, Identifiable {
+class Campaign: Hashable, Identifiable {
     static func == (lhs: Campaign, rhs: Campaign) -> Bool {
         lhs.id == rhs.id
     }
@@ -15,43 +15,32 @@ struct Campaign: Hashable, Identifiable {
             return hasher.combine(id)
         
     }
-    var campaignName: String
-    let id = UUID()
+    static var nextUid = 0
+    static func generateUid() -> Int {
+        nextUid += 1
+        return nextUid
+    }
+    
+    var campaignName: String = ""
+    var id: Int
     var campaignDescription: String
     var positions: [Position]
     var hasVoted: Bool
-}
-struct Position: Hashable, Identifiable {
-    static func == (lhs: Position, rhs: Position) -> Bool {
-        lhs.id == rhs.id
-    }
-    public func hash(into hasher: inout Hasher) {
-            return hasher.combine(id)
-        
-    }
     
-    var positionName: String
-    let id = UUID()
-    var canidates: [Canidate]
-    var totalVotes: Double {
-        var votes: Double = 0.0
-        for canidate in canidates {
-            votes += canidate.votes
+    var defaultSelections: [Canidate] {
+        var temp: [Canidate] = []
+        for p in positions {
+            temp.append(p.canidates[0])
         }
-        return votes
+        return temp
     }
-       
-}
 
-struct Canidate: Hashable, Identifiable {
-    static func == (lhs: Canidate, rhs: Canidate) -> Bool {
-        lhs.id == rhs.id
+    
+    init(campaignName: String, campaignDescription: String, positions: [Position], hasVoted: Bool) {
+        self.campaignName = campaignName
+        self.id = Campaign.generateUid()
+        self.campaignDescription = campaignDescription
+        self.positions = positions
+        self.hasVoted = hasVoted
     }
-    public func hash(into hasher: inout Hasher) {
-            return hasher.combine(id)
-        
-    }
-    var name: String
-    let id = UUID()
-    var votes: Double
 }

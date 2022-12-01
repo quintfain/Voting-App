@@ -18,31 +18,50 @@ struct SubmitCampaignView: View {
             Spacer()
                 .frame(height: 20)
             Text("\(campaign.campaignName)")
-                .font(.largeTitle)
+                .font(.custom("Roboto-Bold", size: 40.0))
+                .foregroundColor(.text)
             Text("\(campaign.campaignDescription)")
+                .font(.custom("Roboto-Medium", size: 16.0))
+                .foregroundColor(.text)
             Spacer()
                 .frame(height: 10)
             Text("Positions")
-                .font(.title)
-            ForEach(campaign.positions) {
-                Text("\($0.positionName)")
-                    .font(.title2)
-                ForEach($0.canidates, id: \.self) {
-                    Text("\($0.name)")
-                    ProgressView("0%", value: 0, total: 100)
-                }
+                .font(.custom("Roboto-Bold", size: 30.0))
+                .foregroundColor(Color.text)
+            ForEach(0..<campaign.positions.count, id: \.self) { i in
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("\(campaign.positions[i].positionName)")
+                        .font(.custom("Roboto-Medium", size: 24.0))
+                        .foregroundColor(Color.text)
+                    ForEach(campaign.positions[i].canidates, id: \.self) {
+                        Text("\($0.name)")
+                            .font(.custom("Roboto-Medium", size: 16.0))
+                            .foregroundColor(Color.text)
+                        ProgressView("0%", value: 0, total: 100)
+                            .foregroundColor(Color.text)
+                            .tint(Color.text)
+                    }
+                }.padding(.all).background (RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(Color.sec))
             }
-            NavigationLink(destination: OrganizerHomeView(viewModel: viewModel).onAppear {
+            NavigationLink(destination: OrganizerHomeView(viewModel: viewModel)
+            .onAppear {
                 viewModel.campaigns.append(campaign)
             }, label: {
                 Text("Submit Campaign")
+                    .font(.custom("Roboto-Bold", size: 20.0))
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accent.opacity(0.7))
+                    .foregroundColor(Color.text)
+                    .cornerRadius(10)
                     .frame(maxWidth: .infinity)
             })
-            .buttonStyle(.borderedProminent)
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
+        .background(Color.background)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
@@ -60,6 +79,7 @@ struct SubmitCampaignView: View {
                     }
                 } label: {
                     Label("Menu", systemImage: "line.3.horizontal")
+                        .foregroundColor(Color.text)
                     
                 }
                 .background(
@@ -73,19 +93,19 @@ struct SubmitCampaignView: View {
 
 struct SubmitCampaignView_Previews: PreviewProvider {
     static var previews: some View {
-        let paul = Canidate(name: "Paul", votes: 0)
-        let riley = Canidate(name: "Riley", votes: 0)
-        let spencer = Canidate(name: "Spencer", votes: 0)
-        let lauren = Canidate(name: "Lauren", votes: 0)
+        let paul = Canidate(name: "Paul", votes: 0, isSelected: false)
+        let riley = Canidate(name: "Riley", votes: 0, isSelected: false)
+        let spencer = Canidate(name: "Spencer", votes: 0, isSelected: false)
+        let lauren = Canidate(name: "Lauren", votes: 0, isSelected: false)
         let pres = Position(positionName: "Pres", canidates: [paul, riley])
         let vp = Position(positionName: "VP", canidates: [spencer, lauren])
         let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
         let viewModel = ViewModel(campaigns: [campaign])
         
-        let quint = Canidate(name: "Quint", votes: 10)
-        let emma = Canidate(name: "Emma", votes: 50)
-        let liz = Canidate(name: "Elizabeth", votes: 30)
-        let tori = Canidate(name: "Tori", votes: 30)
+        let quint = Canidate(name: "Quint", votes: 10, isSelected: false)
+        let emma = Canidate(name: "Emma", votes: 50, isSelected: false)
+        let liz = Canidate(name: "Elizabeth", votes: 30, isSelected: false)
+        let tori = Canidate(name: "Tori", votes: 30, isSelected: false)
         let cap = Position(positionName: "Captain", canidates: [quint, emma])
         let tres = Position(positionName: "Tresurer", canidates: [liz, tori])
         let campaign2 = Campaign(campaignName: "GT Water Polo", campaignDescription: "Description", positions: [cap, tres], hasVoted: true)

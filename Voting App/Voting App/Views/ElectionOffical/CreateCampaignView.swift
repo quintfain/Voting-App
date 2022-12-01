@@ -23,12 +23,34 @@ struct CreateCampaignView: View {
     
     var body: some View {
         VStack {
+            Text("Create Campaign")
+                .font(.custom("Roboto-Bold", size: 30.0))
+                .foregroundColor(.text)
             Form {
-                TextField("Campaign Name", text: $campaignName)
-                TextField("Campaign Description", text: $campaignDescription)
+                ZStack(alignment: .leading) {
+                    if campaignName == "" {
+                        Text("Campaign name")
+                            .foregroundColor(Color.text)
+                            
+                    }
+                    TextField("Campaign Name", text: $campaignName)
+                        .foregroundColor(Color.text)
+                }
+                .listRowBackground(Color.sec)
+                ZStack(alignment: .leading) {
+                    if campaignDescription == "" {
+                        Text("Campaign description")
+                            .foregroundColor(Color.text)
+                            
+                    }
+                    TextField("Campaign Description", text: $campaignDescription)
+                        .foregroundColor(Color.text)
+                }
+                .listRowBackground(Color.sec)
                 Section("Postions") {
                     ForEach(positions, id: \.self) {
                         Text("\($0.positionName)")
+                            .foregroundColor(Color.text)
                     }.onDelete(perform: removeRows)
                     Button("Add Position") {
                         presentedAddPosition = true
@@ -47,7 +69,7 @@ struct CreateCampaignView: View {
                                 .alert("Add Canidate", isPresented: $presentedAddCanidate, actions: {
                                     TextField("Canidate Name", text: $testName)
                                     Button("Add", action: {
-                                        let temp = Canidate(name: testName, votes: 0)
+                                        let temp = Canidate(name: testName, votes: 0, isSelected: false)
                                         tempCanidates.append(temp)
                                         testName = ""
                                     })
@@ -68,17 +90,23 @@ struct CreateCampaignView: View {
                             }
                         }
                         .padding(.horizontal)
+                        .background(Color.background)
                     })
-                }
+                }.listRowBackground(Color.sec)
                 NavigationLink {
                     let campaign = Campaign(campaignName: campaignName, campaignDescription: campaignDescription, positions: positions, hasVoted: false)
                     SubmitCampaignView(viewModel: viewModel, campaign: campaign)
                 } label: {
                     Text("Review and Submit Campaign")
-                }
+                        .font(.custom("Roboto-Bold", size: 16))
+                        .padding()
+                        .foregroundColor(Color.text)
+                }.listRowBackground(Color.sec)
 
             }
-            .navigationTitle("Create Campaign")
+            .scrollContentBackground(.hidden)
+            .background(Color.background)
+            .foregroundColor(Color.text)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
@@ -96,6 +124,7 @@ struct CreateCampaignView: View {
                         }
                     } label: {
                         Label("Menu", systemImage: "line.3.horizontal")
+                            .foregroundColor(Color.text)
                         
                     }
                     .background(
@@ -105,6 +134,7 @@ struct CreateCampaignView: View {
                 }
             }
         }
+        .background(Color.background)
     }
     
     func removeRows(at offsets: IndexSet) {
@@ -120,10 +150,10 @@ struct CreateCampaignView: View {
 
 struct CreateCampaignView_Previews: PreviewProvider {
     static var previews: some View {
-        let paul = Canidate(name: "Paul", votes: 0)
-        let riley = Canidate(name: "Riley", votes: 0)
-        let spencer = Canidate(name: "Spencer", votes: 0)
-        let lauren = Canidate(name: "Lauren", votes: 0)
+        let paul = Canidate(name: "Paul", votes: 0, isSelected: false)
+        let riley = Canidate(name: "Riley", votes: 0, isSelected: false)
+        let spencer = Canidate(name: "Spencer", votes: 0, isSelected: false)
+        let lauren = Canidate(name: "Lauren", votes: 0, isSelected: false)
         let pres = Position(positionName: "Pres", canidates: [paul, riley])
         let vp = Position(positionName: "VP", canidates: [spencer, lauren])
         let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)

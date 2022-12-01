@@ -15,22 +15,26 @@ struct CurrentCampaignsView: View {
     var body: some View {
         VStack {
             Text("Current Campaigns")
-                .font(.title)
-                .fontWeight(.semibold)
+                .font(.custom("Roboto-Bold", size: 30.0))
+                .foregroundColor(.text)
             Spacer()
                 .frame(height: 30)
             ForEach(viewModel.campaigns, id: \.self) { campaign in
                 NavigationLink(destination: ElectionStatusView(viewModel: viewModel, campaign: campaign)) {
                     Text("\(campaign.campaignName)")
-                        .fontWeight(.medium)
+                        .font(.custom("Roboto-Bold", size: 20.0))
+                        .padding()
                         .frame(maxWidth: .infinity)
-                        .font(.title2)
+                        .background(Color.accent.opacity(0.7))
+                        .foregroundColor(Color.text)
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
             }
             Spacer()
         }
         .padding(.horizontal)
+        .background(Color.background)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
@@ -48,6 +52,7 @@ struct CurrentCampaignsView: View {
                     }
                 } label: {
                     Label("Menu", systemImage: "line.3.horizontal")
+                        .foregroundColor(Color.text)
                     
                 }
                 .background(
@@ -61,10 +66,10 @@ struct CurrentCampaignsView: View {
 
 struct CurrentCampaignsView_Previews: PreviewProvider {
     static var previews: some View {
-        let paul = Canidate(name: "Paul", votes: 0)
-        let riley = Canidate(name: "Riley", votes: 0)
-        let spencer = Canidate(name: "Spencer", votes: 0)
-        let lauren = Canidate(name: "Lauren", votes: 0)
+        let paul = Canidate(name: "Paul", votes: 0, isSelected: false)
+        let riley = Canidate(name: "Riley", votes: 0, isSelected: false)
+        let spencer = Canidate(name: "Spencer", votes: 0, isSelected: false)
+        let lauren = Canidate(name: "Lauren", votes: 0, isSelected: false)
         let pres = Position(positionName: "Pres", canidates: [paul, riley])
         let vp = Position(positionName: "VP", canidates: [spencer, lauren])
         let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
