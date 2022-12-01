@@ -13,25 +13,27 @@ struct CurrentCampaignsView: View {
     @State var isNavigationActive = false
     
     var body: some View {
-        VStack {
-            Text("Current Campaigns")
-                .font(.custom("Roboto-Bold", size: 30.0))
-                .foregroundColor(.text)
-            Spacer()
-                .frame(height: 30)
-            ForEach(viewModel.campaigns, id: \.self) { campaign in
-                NavigationLink(destination: ElectionStatusView(viewModel: viewModel, campaign: campaign)) {
-                    Text("\(campaign.campaignName)")
-                        .font(.custom("Roboto-Bold", size: 20.0))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accent.opacity(0.7))
-                        .foregroundColor(Color.text)
-                        .cornerRadius(10)
-                        .frame(maxWidth: .infinity)
+        ScrollView {
+            VStack {
+                Text("Current Campaigns")
+                    .font(.custom("Roboto-Bold", size: 30.0))
+                    .foregroundColor(.text)
+                Spacer()
+                    .frame(height: 30)
+                ForEach(viewModel.campaigns, id: \.self) { campaign in
+                    NavigationLink(destination: ElectionStatusView(viewModel: viewModel, campaign: campaign)) {
+                        Text("\(campaign.campaignName)")
+                            .font(.custom("Roboto-Bold", size: 20.0))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accent.opacity(0.7))
+                            .foregroundColor(Color.text)
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity)
+                    }
                 }
+                Spacer()
             }
-            Spacer()
         }
         .padding(.horizontal)
         .background(Color.background)

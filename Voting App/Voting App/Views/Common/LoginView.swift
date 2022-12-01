@@ -51,6 +51,7 @@ struct LoginView: View {
             .background(Color.background)
         }
         .navigationBarBackButtonHidden(true)
+        .accentColor(Color.text)
     }
     
     @ViewBuilder

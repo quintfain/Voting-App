@@ -15,69 +15,73 @@ struct ElectionStatusView: View {
     var campaign: Campaign
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("\(campaign.campaignName)")
-                .font(.custom("Roboto-Bold", size: 40.0))
-                .foregroundColor(Color.text)
-            Text("\(campaign.campaignDescription)")
-                .font(.custom("Roboto-Medium", size: 18.0))
-                .foregroundColor(Color.text)
-            Spacer()
-                .frame(height: 10)
-            Text("Positions")
-                .font(.custom("Roboto-Bold", size: 30.0))
-                .foregroundColor(Color.text)
-            ForEach(0..<campaign.positions.count, id: \.self) { i in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("\(campaign.positions[i].positionName)")
-                        .font(.custom("Roboto-Medium", size: 24.0))
-                        .foregroundColor(Color.text)
-                    ForEach(campaign.positions[i].canidates, id: \.self) {
-                        Text("\($0.name)")
-                            .font(.custom("Roboto-Medium", size: 16.0))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("\(campaign.campaignName)")
+                    .font(.custom("Roboto-Bold", size: 40.0))
+                    .foregroundColor(Color.text)
+                Text("\(campaign.campaignDescription)")
+                    .font(.custom("Roboto-Medium", size: 18.0))
+                    .foregroundColor(Color.text)
+                Spacer()
+                    .frame(height: 10)
+                Text("Positions")
+                    .font(.custom("Roboto-Bold", size: 30.0))
+                    .foregroundColor(Color.text)
+                ForEach(0..<campaign.positions.count, id: \.self) { i in
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("\(campaign.positions[i].positionName)")
+                            .font(.custom("Roboto-Medium", size: 24.0))
                             .foregroundColor(Color.text)
-                        let percent = ($0.votes / campaign.positions[i].totalVotes) * 100
-                        let formattedFloat = String(format: "%.1f", percent)
-                        ProgressView("\(percent.isNaN ? "0.0" : formattedFloat)%", value: $0.votes, total: campaign.positions[i].totalVotes > 0 ? campaign.positions[i].totalVotes : 100)
-                            .foregroundColor(Color.text)
-                            .tint(Color.text)
-                    }
-                    Spacer()
-                        .frame(height: 5)
-                }.padding(.all).background (RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(Color.sec))
-            }
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
-        .background(Color.background)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Button {
-                        navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
-                        isNavigationActive = true
-                    } label: {
-                        Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
-                    }
-                    Button {
-                        navigateTo = AnyView(LoginView())
-                        isNavigationActive = true
-                    } label: {
-                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
-                    }
-                } label: {
-                    Label("Menu", systemImage: "line.3.horizontal")
-                        .foregroundColor(Color.text)
-                    
+                        ForEach(campaign.positions[i].canidates, id: \.self) {
+                            Text("\($0.name)")
+                                .font(.custom("Roboto-Medium", size: 16.0))
+                                .foregroundColor(Color.text)
+                            let percent = ($0.votes / campaign.positions[i].totalVotes) * 100
+                            let formattedFloat = String(format: "%.1f", percent)
+                            ProgressView("\(percent.isNaN ? "0.0" : formattedFloat)%", value: $0.votes, total: campaign.positions[i].totalVotes > 0 ? campaign.positions[i].totalVotes : 100)
+                                .foregroundColor(Color.text)
+                                .tint(Color.text)
+                        }
+                        Spacer()
+                            .frame(height: 5)
+                    }.padding(.all).background (RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color.sec))
                 }
-                .background(
-                    NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
-                        EmptyView()
-                    })
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .background(Color.background.ignoresSafeArea())
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button {
+                            navigateTo = AnyView(PrivacyCenterView(viewModel: viewModel))
+                            isNavigationActive = true
+                        } label: {
+                            Label("Privacy Center", systemImage: "person.badge.shield.checkmark")
+                        }
+                        Button {
+                            navigateTo = AnyView(LoginView())
+                            isNavigationActive = true
+                        } label: {
+                            Label("Logout", systemImage: "arrowshape.turn.up.backward")
+                        }
+                    } label: {
+                        Label("Menu", systemImage: "line.3.horizontal")
+                            .foregroundColor(Color.text)
+                        
+                    }
+                    .background(
+                        NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                            EmptyView()
+                        })
+                }
             }
         }
+        .background(Color.background.ignoresSafeArea())
+        
     }
 }
 

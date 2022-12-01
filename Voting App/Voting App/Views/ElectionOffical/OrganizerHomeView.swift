@@ -78,6 +78,7 @@ struct OrganizerHomeView: View {
             .background(Color.background)
         }
         .navigationBarBackButtonHidden(true)
+        .accentColor(Color.text)
     }
 }
 

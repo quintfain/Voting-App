@@ -75,7 +75,7 @@ struct ElectionsView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        
+        .accentColor(Color.text)
     }
     
     @ViewBuilder
