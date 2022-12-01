@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct OrganizerHomeView: View {
-    var campaigns: [Campaign]
+    @State private var viewModel = ViewModel()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -20,14 +21,14 @@ struct OrganizerHomeView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.blue)
-                NavigationLink(destination: CurrentCampaignsView(campaigns: campaigns), label: {
+                NavigationLink(destination: CurrentCampaignsView(viewModel: viewModel), label: {
                     Text("Current Campaigns")
                         .font(.title3)
                         .fontWeight(.medium)
                         .frame(maxWidth: .infinity)
                 })
                 .buttonStyle(.bordered)
-                NavigationLink(destination: CreateCampaignView(),
+                NavigationLink(destination: CreateCampaignView(viewModel: viewModel),
                     label: {
                     Text("Create Campaign")
                         .font(.title3)
@@ -41,7 +42,7 @@ struct OrganizerHomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                      Menu(content: {
-                         NavigationLink(destination: OrganizerHomeView(campaigns: campaigns)) {
+                         NavigationLink(destination: OrganizerHomeView()) {
                              HStack {
                                  Text("Home")
                                  Image(systemName: "house")
@@ -75,7 +76,8 @@ struct OrganizerHomeView_Previews: PreviewProvider {
         let lauren = Canidate(name: "Lauren", votes: 30)
         let pres = Position(positionName: "Pres", canidates: [paul, riley])
         let vp = Position(positionName: "VP", canidates: [spencer, lauren])
-        let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp])
-        OrganizerHomeView(campaigns: [campaign])
+        let campaign = Campaign(campaignName: "Test Campaign", campaignDescription: "Description", positions: [pres, vp], hasVoted: false)
+        let viewModel = ViewModel(campaigns: [campaign])
+        OrganizerHomeView()
     }
 }

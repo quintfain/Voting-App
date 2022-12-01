@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Campaign: Hashable {
+struct Campaign: Hashable, Identifiable {
     static func == (lhs: Campaign, rhs: Campaign) -> Bool {
         lhs.id == rhs.id
     }
@@ -19,8 +19,9 @@ struct Campaign: Hashable {
     let id = UUID()
     var campaignDescription: String
     var positions: [Position]
+    var hasVoted: Bool
 }
-struct Position: Hashable {
+struct Position: Hashable, Identifiable {
     static func == (lhs: Position, rhs: Position) -> Bool {
         lhs.id == rhs.id
     }
@@ -32,8 +33,8 @@ struct Position: Hashable {
     var positionName: String
     let id = UUID()
     var canidates: [Canidate]
-    var totalVotes: Int {
-        var votes = 0
+    var totalVotes: Double {
+        var votes: Double = 0.0
         for canidate in canidates {
             votes += canidate.votes
         }
@@ -42,7 +43,7 @@ struct Position: Hashable {
        
 }
 
-struct Canidate: Hashable {
+struct Canidate: Hashable, Identifiable {
     static func == (lhs: Canidate, rhs: Canidate) -> Bool {
         lhs.id == rhs.id
     }
@@ -52,5 +53,5 @@ struct Canidate: Hashable {
     }
     var name: String
     let id = UUID()
-    var votes: Int
+    var votes: Double
 }

@@ -52,9 +52,9 @@ struct PrivacyPolicyView: View {
     @ViewBuilder
     func openHomeView() -> some View {
         if isVoter {
-            AnyView(ElectionsView(campaigns: TestData.init().campaigns))
+            AnyView(ElectionsView())
         } else {
-            AnyView(OrganizerHomeView(campaigns: TestData.init().campaigns))
+            AnyView(OrganizerHomeView())
         }
     }
 }
