@@ -42,6 +42,7 @@ struct VotingView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
+                    .accentColor(Color.text)
                     Spacer()
                         .frame(height: 5)
                 }.padding(.all).background (RoundedRectangle(cornerRadius: 10, style: .continuous)
