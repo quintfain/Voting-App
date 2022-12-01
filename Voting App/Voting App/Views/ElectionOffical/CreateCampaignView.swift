@@ -29,21 +29,21 @@ struct CreateCampaignView: View {
             Form {
                 ZStack(alignment: .leading) {
                     if campaignName == "" {
-                        Text("Campaign name")
-                            .foregroundColor(Color.text)
+                        Text("Enter campaign name")
+                            .foregroundColor(Color.text.opacity(0.2))
                             
                     }
-                    TextField("Campaign Name", text: $campaignName)
+                    TextField("", text: $campaignName)
                         .foregroundColor(Color.text)
                 }
                 .listRowBackground(Color.sec)
                 ZStack(alignment: .leading) {
                     if campaignDescription == "" {
-                        Text("Campaign description")
-                            .foregroundColor(Color.text)
+                        Text("Enter campaign description")
+                            .foregroundColor(Color.text.opacity(0.2))
                             
                     }
-                    TextField("Campaign Description", text: $campaignDescription)
+                    TextField("", text: $campaignDescription)
                         .foregroundColor(Color.text)
                 }
                 .listRowBackground(Color.sec)
@@ -56,9 +56,22 @@ struct CreateCampaignView: View {
                         presentedAddPosition = true
                     }.sheet(isPresented: $presentedAddPosition, content: {
                         Form {
+                            Text("Create New Position")
+                                .font(.custom("Roboto-Bold", size: 30.0))
+                                .foregroundColor(.text)
+                                .listRowBackground(Color.background)
                             Section {
-                                TextField("Position Name", text: $testPositions)
-                            }
+                                ZStack(alignment: .leading) {
+                                    if testPositions == "" {
+                                        Text("Enter position name")
+                                            .foregroundColor(Color.text.opacity(0.2))
+                                        
+                                    }
+                                    TextField("Position Name", text: $testPositions)
+                                        .foregroundColor(.text)
+                                        .tint(.text)
+                                }
+                            }.listRowBackground(Color.sec)
                             Section("Canidates") {
                                 ForEach(tempCanidates, id: \.self) {
                                     Text("\($0.name)")
@@ -77,7 +90,7 @@ struct CreateCampaignView: View {
                                 }, message: {
                                     Text("Please enter the name of the canidate")
                                 })
-                            }
+                            }.listRowBackground(Color.sec)
                             Button{
                                 presentedAddPosition = false
                                 let temp = Position(positionName: testPositions, canidates: tempCanidates)
@@ -86,11 +99,15 @@ struct CreateCampaignView: View {
                                 testPositions = ""
                             } label: {
                                 Text("Add Position")
+                                    .font(.custom("Roboto-Bold", size: 16))
+                                    .padding()
+                                    .foregroundColor(Color.text)
                                     .frame(maxWidth: .infinity)
-                            }
+                            }.listRowBackground(Color.sec)
                         }
                         .padding(.horizontal)
                         .background(Color.background)
+                        .foregroundColor(Color.text)
                     })
                 }.listRowBackground(Color.sec)
                 NavigationLink {
