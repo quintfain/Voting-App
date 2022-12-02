@@ -24,17 +24,33 @@ struct LoginView: View {
                     .foregroundColor(.text)
                     .fontWeight(.bold)
                 Spacer()
-                TextField("Student ID", text: $studentID)
-                    .font(.custom("Roboto-Medium", size: 20.0))
-                    .padding(.horizontal , 15)
-                    .frame(height: 40.0)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                    .autocapitalization(.none)
-                SecureField("Password", text: $password)
-                    .font(.custom("Roboto-Medium", size: 20.0))
-                    .padding(.horizontal , 15)
-                    .frame(height: 40.0)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                ZStack(alignment: .leading) {
+                    if  studentID == "" {
+                        Text("  Enter StudentID")
+                            .foregroundColor(Color.text)
+                            
+                    }
+                    TextField("", text: $studentID)
+                        .font(.custom("Roboto-Medium", size: 20.0))
+                        .padding(.horizontal , 15)
+                        .frame(height: 40.0)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.secondary))
+                        .autocapitalization(.none)
+                        .foregroundColor(Color.text)
+                }
+                ZStack(alignment: .leading) {
+                    if password == "" {
+                        Text("  Enter Password")
+                            .foregroundColor(Color.text)
+                            
+                    }
+                    SecureField("", text: $password)
+                        .font(.custom("Roboto-Medium", size: 20.0))
+                        .padding(.horizontal , 15)
+                        .frame(height: 40.0)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.secondary))
+                        .foregroundColor(Color.text)
+                }
                 NavigationLink(destination: loginButtonClicked(),  label: {
                     Text("Submit")
                         .font(.custom("Roboto-Bold", size: 20.0))
